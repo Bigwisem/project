@@ -21,9 +21,6 @@ jobs:
     - name: Install project dependencies
       run: npm ci
 
-    - name: Debug file structure
-      run: ls -R cypress/integration
-
     - name: Fix Cypress binary permissions
       run: chmod -R 755 ~/.cache/Cypress
 
