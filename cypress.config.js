@@ -21,7 +21,7 @@ module.exports = defineConfig({
   projectId: "mkh3tm", // This is required for recording runs
   e2e: {
     setupNodeEvents,
-    specPattern: "cypress/integration/**/*.feature", 
+    specPattern: "cypress/Integration/**/*.feature", 
     baseUrl: "https://www.demoblaze.com", 
     supportFile: "cypress/support/e2e.js", 
   },
