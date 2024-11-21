@@ -1,0 +1,29 @@
+{
+
+  "BaseURL": "https://www.demoblaze.com",
+  
+  "username": "obohpeter3",
+
+  "password": "obohpeter3", 
+
+  "Name": "Oboh Peter",
+ 
+  "Country" : "Nigeria",
+ 
+  "InvalidEmail": "Peter.inter",
+ 
+  "ValidEmail": "Obohpeter555@gmail.com",
+ 
+  "Message": "I am nice to be with",
+ 
+  "City" : "Edo",
+ 
+  "CreditCard" : 212234231345676,
+ 
+  "Month" : "O6",
+ 
+  "Month2": "June",
+ 
+  "Year" : "2023"
+ 
+ }
