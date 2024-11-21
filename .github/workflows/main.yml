@@ -18,7 +18,7 @@ jobs:
       with:
         node-version: '20.18.0'
 
-    - name: Install project dependencies with npm ci
+    - name: Install project dependencies
       run: npm ci
 
     - name: Install Cypress globally
@@ -27,7 +27,8 @@ jobs:
     - name: Fix node_modules permissions
       run: chmod -R 755 ./node_modules
 
-
+    - name: Debug file structure
+      run: ls -R cypress/integration
 
     - name: Run Cypress tests on Chrome
       run: npx cypress run --config-file=cypress.config.js --record true --key ${{ secrets.CYPRESS_RECORD_KEY }} --browser chrome
