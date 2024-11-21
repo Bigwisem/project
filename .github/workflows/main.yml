@@ -17,14 +17,22 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '20.18.0'
-    
+
     - name: Install project dependencies
       run: npm install
 
-    - name: Fix Cypress permissions
-      run: chmod +x ./node_modules/.bin/cypress
-    
-    - name: Run Cypress tests
-      run: npx cypress run --config-file=cypress.config.js --record true --key ${{ secrets.CYPRESS_RECORD_KEY }}
+    - name: Cache Cypress binary
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/Cypress
+        key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-cypress-
+
+    - name: Install Cypress binary
+      run: npx cypress install
+
+    - name: Run Cypress tests on Chrome
+      run: npx cypress run --config-file=cypress.config.js --record true --key ${{ secrets.CYPRESS_RECORD_KEY }} --browser chrome
       env:
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
