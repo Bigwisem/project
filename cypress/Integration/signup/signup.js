@@ -7,8 +7,8 @@ Given('I open the Demo Blaze website', () => {
 });
 
 When('I click on the "Sign up" button', () => {
-  cy.get('#signin2').click(); // Click on the sign-up button
-  cy.get('#sign-username').should('be.visible'); // Ensure the modal is loaded
+  cy.get('#signin2').should('be.visible').click(); // Ensure the button is visible before clicking
+  cy.get('#sign-username').should('be.visible');  // Assert the modal has opened
 });
 
 When('I enter a unique username', function () {
