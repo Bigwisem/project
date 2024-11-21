@@ -3,7 +3,7 @@ name: Cypress tests
 on:
   push:
     branches:
-      - master  
+      - master
 
 jobs:
   cypress-run:
@@ -18,22 +18,14 @@ jobs:
       with:
         node-version: '20.18.0'
 
-    - name: Install project dependencies
-      run: npm install
+    - name: Install project dependencies with npm ci
+      run: npm ci
 
-    - name: Cache Cypress binary
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/Cypress
-        key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-cypress-
+    - name: Install Cypress globally
+      run: npm install -g cypress
 
-    - name: Install Cypress binary
-      run: npx cypress install
-
-    - name: Fix Cypress permissions
-      run: chmod -R 755 ./node_modules/.bin/cypress
+    - name: Fix node_modules permissions
+      run: chmod -R 755 ./node_modules
 
     - name: Run Cypress tests on Chrome
       run: npx cypress run --config-file=cypress.config.js --record true --key ${{ secrets.CYPRESS_RECORD_KEY }} --browser chrome
