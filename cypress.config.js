@@ -18,7 +18,7 @@ async function setupNodeEvents(on, config) {
 }
 
 module.exports = defineConfig({
-  projectId: "mkh3tm", // This is required for recording runs
+  projectId: "mkh3tm", 
   e2e: {
     setupNodeEvents,
     specPattern: "cypress/Integration/**/*.feature", 
