@@ -7,17 +7,22 @@ const createEsbuildPlugin = require("@badeball/cypress-cucumber-preprocessor/esb
 async function setupNodeEvents(on, config) {
   await addCucumberPreprocessorPlugin(on, config);
 
-  on("file:preprocessor", createBundler({
-    plugins: [createEsbuildPlugin.default(config)]
-  }));
+  on(
+    "file:preprocessor",
+    createBundler({
+      plugins: [createEsbuildPlugin.default(config)],
+    })
+  );
 
   return config;
 }
 
 module.exports = defineConfig({
-  projectId: "mkh3tm",
+  projectId: "mkh3tm", // This is required for recording runs
   e2e: {
     setupNodeEvents,
-    specPattern: "cypress/integration/*.feature",
+    specPattern: "cypress/integration/*.feature", // Adjust if necessary
+    baseUrl: "https://www.demoblaze.com", // Replace with your app's base URL
+    supportFile: "cypress/support/e2e.js", // Ensure this file exists
   },
 });
